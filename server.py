@@ -6,11 +6,17 @@ linefish=1
 found_fishs=0
 fishes=[]
 max_interval_btw_clicks=1300#1.3s
+def check_change(box):
+    change=False
+    color=pyautogui.pixel(box[0],box[1]+30)
+    while not change:
+        if color!=pyautogui.pixel(box[0],box[1]+30):
+            change=True
 
 while True:
     for box in list(pyautogui.locateAllOnScreen("./src/static/fish_config.png")):
         pyautogui.click(box[0]+4,box[1]+4,duration=randint(30,max_interval_btw_clicks)/1000)
-        pyautogui.sleep(2)
+        check_change(box)
         dropdown=pyautogui.locateOnScreen("./src/static/fish_drop_down.png")
         if dropdown: 
             feed_button=pyautogui.locateOnScreen("./src/static/fish_feed.png")
