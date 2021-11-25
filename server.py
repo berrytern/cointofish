@@ -1,7 +1,7 @@
 import pyautogui
 from random import randint
 
-interval=10
+interval=2
 linefish=1
 found_fishs=0
 fishes=[]
@@ -19,5 +19,6 @@ while True:
                 pyautogui.click(dropdown[0],dropdown[1]+42,duration=randint(30,max_interval_btw_clicks)/1000)
                 pyautogui.click(feed_button[0]+4,feed_button[1]+4,duration=randint(30,max_interval_btw_clicks)/1000)
         close=pyautogui.locateOnScreen("./src/static/fish_close.png")
-        pyautogui.click(close[0]+4,close[1]+4,duration=randint(30,max_interval_btw_clicks)/1000)
+        if close:
+            pyautogui.click(close[0]+4,close[1]+4,duration=randint(30,max_interval_btw_clicks)/1000)
     pyautogui.sleep(interval)
